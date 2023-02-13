@@ -1,0 +1,36 @@
+{
+        "data": [
+            {
+                "nama": "Davin Metoti",
+                "email": "davin@gmail",
+                "Cabang": "Pusat",
+                "Divisi": "IT"
+            },
+            {
+                "nama": "David Kurniawan Susilo",
+                "email": "david@gmail",
+                "Cabang": "Pusat",
+                "Divisi": "IT"
+            },
+            {
+                "nama": "Muhammad Akbar Chori Lion",
+                "email": "akbar@gmail",
+                "Cabang": "Pusat",
+                "Divisi": "IT"
+            },
+            {
+                "nama": "Anis Rahmawati",
+                "email": "Anis@gmail",
+                "Cabang": "Pusat",
+                "Divisi": "IT"
+            }
+        ],
+        "header": [
+        {
+            "NAMA" : "NAMA",
+            "CABANG" : "CABANG",
+            "EMAIL" : "EMAIL",
+            "DVISI" : "DIVISI"
+        }
+        ]
+}

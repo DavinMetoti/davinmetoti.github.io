@@ -1,0 +1,29 @@
+<div class="card grid">
+    <h2 class="col-9">{{title}} </h2>
+    <div class="layout-menu-button col-3 field flex flex-wrap gap-2 p-toolbar-group-end" >
+        <button pButton type="button">Tambah Karyawan</button>
+    </div>
+</div>
+<p-table [value]="data" [tableStyle]="{'min-width': '70rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Cabang</th>
+            <th>Divisi</th>
+            <th>edit</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" class="col-12" let-data >
+        <tr>
+            <td>{{data.nama}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.cabang}}</td>
+            <td>{{data.divisi}}</td>
+            <td class="flex flex-wrap gap-2">
+                <button pButton pRipple class="p-button-success" >Edit</button>
+                <button pButton pRipple class="p-button-danger">Delete</button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

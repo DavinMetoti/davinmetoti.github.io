@@ -1,0 +1,22 @@
+{
+        "admin": [
+            {
+                "nama": "Davin Metoti",
+                "username" : "dapin",
+                "password" : "dapin123"
+            },
+            {
+                "nama": "Anis Rahmawati",
+                "username" : "anis",
+                "password" : "anis123"
+
+            }
+        ],
+        "user": [
+        {
+            "nama": "metoti",
+            "username" : "metoti",
+            "password" : "metoti123"
+        }
+        ]
+}

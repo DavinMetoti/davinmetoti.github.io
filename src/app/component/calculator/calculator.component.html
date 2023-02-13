@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="card">
+        <h1 class="text-center">Calculator</h1>
+             <div class="card">
+                <div class="field p-fluid ">
+                    <div class="field" >
+                        <label htmlFor="masukan">Input Angka</label>
+                        <input pInputText type="text" id="masukan" class="text-right" value="{{input}}" disabled>
+                    </div>
+                    <div class="field">
+                        <label htmlFor="hasil">Hasil</label>
+                        <input pInputText type="text" id="hasil" class="text-right" value="{{result}}" disabled>
+                    </div>
+                    </div>
+                    <div class="card" >
+                        <div class="field flex flex-wrap gap-2">
+                            <button pButton pRipple class="p-button-rounded p-button-danger" style="width: 46.3%;" type="button" (click)="allClear()" label="Clear"><span class="p-ink"></span></button>
+                            <button pButton pRipple class="p-button-rounded p-button-warning" style="width: 23%;" type="button" (click)="clear()" label="Backspace"></button>
+                            <button pButton pRipple class="p-button-rounded p-button-success" style="width: 29%;" type="button" (click)="pressOperator('/')" label="/"></button>
+                          </div>
+                    <div class="field flex flex-wrap gap-2 ">
+                        <button pButton pRipple class="p-button-rounded p-button-success " style="width: 22.5%;" type="button" (click)="pressNum('7')" label="7"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success " style="width: 23%;" type="button" (click)="pressNum('8')" label="8"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success " style="width: 23%;" type="button" (click)="pressNum('9')" label="9"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success " style="width: 29%;" type="button" (click)="pressOperator('*')" label="X"></button>
+                    </div>
+                    <div class="field flex flex-wrap gap-2">
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 22.5%;" type="button" (click)="pressNum('4')" label="4"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 23%;" type="button" (click)="pressNum('5')" label="5"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 23%;" type="button" (click)="pressNum('6')" label="6"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 29%;" type="button" (click)="pressOperator('-')" label="-"></button>
+                    </div>
+                    <div class="field flex flex-wrap gap-2">
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 22.5%;" type="button" (click)="pressNum('1')" label="1"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 23%;" type="button" (click)="pressNum('2')" label="2"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 23%;" type="button" (click)="pressNum('3')" label="3"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 29%;" type="button" (click)="pressOperator('+')" label="+"></button>
+                    </div>
+                    <div class="field flex flex-wrap gap-2">
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 22.5%;" type="button" (click)="pressNum('.')" label=","></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success "  style="width: 23%;" type="button" (click)="pressNum('0')" label="0"></button>
+                        <button pButton pRipple class="p-button-rounded p-button-success p-button-outlined "  style="width: 52.8%;" type="button" (click)="getAnswer()" label="="></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="card">
+                <div class="formgroup-inline">
+                    <div class="field" >
+                        <label htmlFor="masukan">Input Angka</label>
+                        <input type="text" id="masukan" class="text-right" value="{{input}}" disabled>
+                    </div>
+                    <div class="field">
+                        <label htmlFor="hasil">Hasil</label>
+                        <input type="text" id="masukan" class="text-right" value="{{result}}" disabled>                    
+                    </div>
+                </div>
+
+                <div class="p-form grid" >
+                    <div class="col-4" *ngFor="let val of value" >
+                        <p-Button pRipple pButton class="p-button-rounded p-button-success" label="{{val}}" (click)="changeVal(val)" style="width:100%"></p-Button>
+                    </div>
+                </div>
+
+            </div> -->
+                
+
+        </div>
+    </div>

@@ -1,0 +1,56 @@
+<div class="grid">
+		<div class="col-12 lg:col-6">
+	<div>
+			<div class="card">
+				<h5>Form Permohonan </h5>
+				<div class="field p-fluid">
+					<div class="field" >
+						<label htmlFor="Nama">Nama Pemohon</label>
+						<input pInputText id="Nama" type="text"   [(ngModel)]="nama" required >
+						<small >Harap masukan nama lengkap</small>
+						
+					</div>
+					<div class="field">
+						<label htmlFor="NIP">Nomor Induk Pegawai</label>
+						<input pInputText id="NIP" type="number" [(ngModel)]="nip">
+					</div>
+					<div class="field">
+						<label for="Cabang">Cabang</label>
+						<p-dropdown id="Cabang" [options]="dropdownItems" itemid="code" [(ngModel)]="selectedState" [(ngModel)]="cabng" optionLabel="name" placeholder="Cabang"></p-dropdown>
+					</div>
+					<div class="field">
+						<label for="Divisi">Divisi</label>
+						<input pInputText id="Divisi" type="text"  [(ngModel)]="divisi">
+					</div>
+					<div class="field">
+						<label for="Komplain">Jenis Pengajuan</label>
+						<p-dropdown id="Komplain" [options]="jeniskomplain" itemid="id" [(ngModel)]="komplainmenu" [(ngModel)]="kmpln" optionLabel="komplain" placeholder="Pilih permohonan"></p-dropdown>
+					</div>
+				</div>	
+				<button pButton pRipple type="button" (click)="submit(nama, divisi, selectedState, nip, komplainmenu)" class="p-button-rounded p-button-outlined p-button-danger" label="Uji Coba" ></button>
+				<p-toast position="top-left"></p-toast>
+
+		</div>
+	</div>
+		</div>
+		<div class="col-12 lg:col-6" *ngIf="show" >
+			<div class="card p-fluid" >
+				<h5>Ini Hasil</h5>
+				<div>
+					<p><strong>Nama Karyawan</strong></p>
+					<p>{{this.nama_karyawan}}</p>
+					<p><strong>Nomor Induk Pegawai</strong></p>
+					<p>{{this.ininip}}</p>
+					<p><strong>Cabang</strong></p>
+					<p>{{this.inicabang.name}}</p>
+					<p><strong>Devisi</strong></p>
+					<p>{{this.divisi_karyawan}}</p>
+					<p><strong>Jenis Permohonan</strong></p>
+					<p>{{this.kompline.komplain}}</p>
+				</div>
+			</div>
+			<div class="card">
+				<h4><p><center>Pengajuan berhasil</center></p></h4>
+			</div>
+
+</div>

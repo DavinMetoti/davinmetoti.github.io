@@ -1,0 +1,52 @@
+
+    <div class="grid">
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>Form Pengajuan</h5>
+            <div class="field p-fluid">
+                <div class="field" >
+                    <label htmlFor="Nama">Nama Pemohon</label>
+                    <input pInputText id="Nama" type="text"   [(ngModel)]="nama" required >
+                    <small >Harap masukan nama lengkap</small>
+                    
+                </div>
+                <div class="field">
+                    <label htmlFor="NIP">Nomor Induk Pegawai</label>
+                    <input pInputText id="NIP" type="number" [(ngModel)]="nip">
+                </div>
+                <div class="field">
+                    <label for="Cabang">Cabang</label>
+                    <p-dropdown id="Cabang" [options]="dropdownItems" itemid="code" [(ngModel)]="selectedState" [(ngModel)]="cabng" optionLabel="name" placeholder="Cabang"></p-dropdown>
+                </div>
+                <div class="field">
+                    <label for="Divisi">Divisi</label>
+                    <input pInputText id="Divisi" type="text"  [(ngModel)]="divisi">
+                </div>
+                <div class="field">
+                    <label for="Pengajuan">Jenis Pengajuan</label>
+                    <p-dropdown id="Pengajuan" [options]="jenispengajuanitem" itemid="code" [(ngModel)]="jenispengajuan" [(ngModel)]="pngjn" optionLabel="jenis" placeholder="Pilih Jenis Pengajuan"></p-dropdown>
+
+            </div>	
+            <button pButton pRipple type="button" (click)="submit(nama, divisi, selectedState, nip, jenispengajuan) " class="p-button-rounded p-button-outlined p-button-success" label="Kirim Pengajuan"></button>
+            <p-toast position="top-left"></p-toast>
+    </div>
+    </div>
+</div>
+    <div class="col-12 lg:col-6" *ngIf="show" >
+        <div class="card p-fluid" >
+            <h5>Ini Hasil</h5>
+            <div>
+                <p><strong>Nama Karyawan</strong></p>
+                <p>{{this.nama_karyawan}}</p>
+                <p><strong>Nomor Induk Pegawai</strong></p>
+                <p>{{this.ininip}}</p>
+                <p><strong>Cabang</strong></p>
+                <p>{{this.inicabang.name}}</p>
+                <p><strong>Devisi</strong></p>
+                <p>{{this.divisi_karyawan}}</p>
+                <p><strong>Jenis Pengajuan</strong></p>
+                <p>{{this.jenispengajuan.jenis}}</p>
+            </div>
+        </div>
+</div>
+</div>
