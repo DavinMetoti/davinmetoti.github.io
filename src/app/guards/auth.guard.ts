@@ -6,15 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  userRole = 'admin'
   constructor(private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.userRole !== 'admin') {
-      this.router.navigate(['beranda/access-denied'])
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+
+    if (username !== 'admin') {
+      this.router.navigate(['/beranda/access-denied']);
+      return false;
     }
-      return true;
+    
+    return true;
   }
-  
 }

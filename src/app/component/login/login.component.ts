@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { AppConfig } from 'src/app/api/appconfig';
 import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/service/app.config.service';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
 selector: 'app-login',
@@ -15,15 +15,15 @@ width: 100%;
 padding:1rem;
 }
 :host ::ng-deep .pi-eye{
-  transform:scale(1.6);
-  margin-right: 1rem;
-  color: var(--primary-color) !important;
+transform:scale(1.6);
+margin-right: 1rem;
+color: var(--primary-color) !important;
 }
 
 :host ::ng-deep .pi-eye-slash{
-  transform:scale(1.6);
-  margin-right: 1rem;
-  color: var(--primary-color) !important;
+transform:scale(1.6);
+margin-right: 1rem;
+color: var(--primary-color) !important;
 }
 `]
 })
@@ -33,47 +33,52 @@ username: any;
 password:any;
 config: AppConfig
 subscription: Subscription
-user: SocialUser;
 loggedIn: boolean;
+admin: any;
+users: any;
 
 constructor(
-  private router: Router, 
-  private messageService: MessageService, 
-  private configService: ConfigService,
-  private authService: SocialAuthService,
-  ) { }
+private router: Router,
+private messageService: MessageService,
+private configService: ConfigService,
+private authService: AuthService
+) { }
 
-ngOnDestroy(): void { 
-  if (this.subscription) {
-    this.subscription.unsubscribe();
-  }
+ngOnDestroy(): void {
+if (this.subscription) {
+this.subscription.unsubscribe();
+}
 }
 
-ngOnInit(): void { 
-  this.config = this.configService.config;
-  this.subscription = this.configService.configUpdate$.subscribe(config => {
-    this.config = config;
-  });
-  this.authService.authState.subscribe((user) => {
-    console.log(user)
-    this.user = user;
-    this.loggedIn = (user != null);
+ngOnInit(): void {
+this.config = this.configService.config;
+this.subscription = this.configService.configUpdate$.subscribe(config => {
+this.config = config;
 });
+this.authService.getadmin().then(admin => this.admin = admin);
+this.authService.getUser().then(user => this.users = user);
 }
-
-signInWithGoogle(): void {
-  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-}
-
-signOut(): void {
-  this.authService.signOut();
-}
-
 masuk() {
-this.router.navigate(['beranda']);
-}
-
-masukdaftar(): void {
-this.router.navigate(['memberbaru'])
-}
+  for (let i = 0; i < this.admin.length; i++) {
+  if (this.username === this.admin[i].username && this.password === this.admin[i].password) {
+  this.loggedIn = true;
+  break;
+  }
+  }
+  for (let i = 0; i < this.users.length; i++) {
+  if (this.username === this.users[i].username && this.password === this.users[i].password) {
+  this.loggedIn = true;
+  break;
+  }
+  }
+  if (this.loggedIn) {
+  this.router.navigate(['beranda']);
+  } else {
+  this.messageService.add({ severity: 'error', summary: 'Gagal Masuk', detail: 'Username atau Password salah' });
+  }
+  }
+  
+  masukdaftar(): void {
+  this.router.navigate(['memberbaru'])
+  }
 }

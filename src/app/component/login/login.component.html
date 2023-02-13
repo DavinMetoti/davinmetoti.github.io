@@ -1,50 +1,40 @@
+<p-toast position="top-center"></p-toast>
 <div class="surface flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden" style="background-color:rgb(0, 118, 98);">
     <div class="grid justify-content-center p-2 lg:p-0" style="min-width:80%">
-        <div class="col-12 mt-5 xl:mt-0 text-center">
-            <strong><span style="color: aliceblue"><h2>GERBANG PORTAL</h2></span></strong>
-        </div>
-
-
-   
-        <div class="col-12 xl:col-6" style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, rgb(0,165,135) 10%, rgb(0,165,135) 30%);">
-            <div class="h-full w-full m-0 py-7 px-4" style="border-radius:53px; background: linear-gradient(180deg, var(--surface-50) 38.9%, var(--surface-0));">
-                <div class="text-center mb-5">
-                    <div class="text-900 text-3xl font-medium mb-3">Selamat Datang</div>
-                    <span class="text-600 font-medium">Harap masukan username dan password</span>
-                </div>
-            
-                <div class="w-full md:w-10 mx-auto">
-                    <label for="username" class="block text-900 text-xl font-medium mb-2">Username</label>
-                    <input id="username" type="text" placeholder="Username" [(ngModel)]="username" pInputText class="w-full mb-3" style="padding:1rem;">
-            
-                    <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                    <p-password id="password1" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" [feedback]="false"  styleClass="w-full mb-3"></p-password>
-            
-                    <div class="flex align-items-center justify-content-between mb-5">
-                        <div class="flex align-items-center">
-                            <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                            <label for="rememberme1">Remember me</label>
-                        </div>
-                        <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: rgb(0, 118, 98)">Forgot password?</a>
-                    </div>
-                    <div class="field">
-                    <button pButton style="background-color:rgb(0,165,135) ; border-color:rgb(0, 118, 98) ;" label="Masuk" class="w-full p-3 text-xl" (click)="masuk()"></button>
-                </div>
+      <div class="col-12 mt-5 xl:mt-0 text-center">
+        <strong>
+          <span style="color: aliceblue">
+            <h2>PORTAL GATE</h2>
+          </span>
+        </strong>
+      </div>
+  
+      <div class="col-12 xl:col-6" style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, rgb(0,165,135) 10%, rgb(0,165,135) 30%);">
+        <div class="h-full w-full m-0 py-7 px-4" style="border-radius:53px; background: linear-gradient(180deg, var(--surface-50) 38.9%, var(--surface-0));">
+          <div class="text-center mb-5">
+            <div class="text-900 text-3xl font-medium mb-3">Welcome</div>
+            <span class="text-600 font-medium">Please enter your username and password</span>
+          </div>
+  
+          <div class="w-full md:w-10 mx-auto">
+            <label for="username" class="block text-900 text-xl font-medium mb-2">Username</label>
+            <input id="username" type="text" placeholder="Username" [(ngModel)]="username" pInputText class="w-full mb-3" style="padding:1rem;">
+  
+            <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
+            <p-password id="password1" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" [feedback]="false" styleClass="w-full mb-3"></p-password>
+  
+            <div class="flex align-items-center justify-between mb-5">
+              <div class="flex align-items-center">
+                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                <label for="rememberme1">Remember me</label>
+              </div>
+              <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: rgb(0, 118, 98)">Forgot password?</a>
+            </div>
+            <div class="field">
+              <button pButton style="background-color:rgb(0,165,135); border-color:rgb(0, 118, 98);" label="Sign In" class="w-full p-3 text-xl" (click)="masuk()"></button>
+            </div>
                     <div >
                     <button pButton style="background-color:rgb(0,165,135) ; border-color:rgb(0, 118, 98) ;" label="Daftar" class="w-full p-3 text-xl" (click)="masukdaftar()" ></button>
-                    <!-- </div>
-                    <div *ngIf="!loggedIn" >
-                        <div *ngIf="!loggedIn">
-                            <button (click)="signInWithGoogle()" class="btn-login">Sign In with Google</button>
-                        </div>
-                        <div *ngIf="loggedIn" class="card-user">
-                            <h2>{{ user.name }}</h2>
-                            <p>{{ user.email }}</p>
-                            <button (click)="signOut()" class="btn-logout">Log Out</button>
-                        </div>
-                    <p-toast position="top-center"></p-toast>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
