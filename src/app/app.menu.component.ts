@@ -27,7 +27,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items:[
-                    {label: 'Dashboard',icon: 'pi pi-fw pi-home', routerLink: ['/']}
+                    {label: 'Beranda',icon: 'pi pi-fw pi-home', routerLink: ['/beranda']}
                 ]
             },
             {
@@ -37,7 +37,7 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Form Pengajuan', icon: 'pi pi-fw pi-check-square', routerLink: ['pengajuan']},
                     {label: 'Table', icon: 'pi pi-fw pi-table', routerLink: ['tabel']},
                     {label: 'Kalkulator', icon: 'pi pi-fw pi-bookmark', routerLink: ['calculator']},
-                    {label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate']},
+                    {label: 'Tabel Biasa', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['tabeledit']},
                     
                 ]
             }
