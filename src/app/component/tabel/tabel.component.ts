@@ -24,6 +24,7 @@ export class TabelComponent implements OnInit {
 
   ngOnInit() {
     this.Userservice.getKaryawan().then(data => this.karyawan = data);
+
   };
 
   customSort(event: SortEvent) {
