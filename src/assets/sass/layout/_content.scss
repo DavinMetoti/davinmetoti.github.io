@@ -1,4 +1,3 @@
-$bg-image-path: '../../../assets/layout/images/bg.jpg';
 .layout-main-container {
     display: flex;
     flex-direction: column;
@@ -6,7 +5,7 @@ $bg-image-path: '../../../assets/layout/images/bg.jpg';
     justify-content: space-between;
     padding: 7rem 2rem 2rem 4rem;
     transition: margin-left $transitionDuration;
-        background-image: url('#{$bg-image-path}');
+        background-image: url('../../../assets/layout/images/bglayout.jpg');
 
       
 }

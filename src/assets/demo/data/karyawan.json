@@ -24,13 +24,5 @@
                 "Cabang": "Pusat",
                 "Divisi": "IT"
             }
-        ],
-        "header": [
-        {
-            "NAMA" : "NAMA",
-            "CABANG" : "CABANG",
-            "EMAIL" : "EMAIL",
-            "DVISI" : "DIVISI"
-        }
         ]
 }

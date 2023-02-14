@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-  userRole = 'user';
+  userRole = 'admin';
   constructor(private router:Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
