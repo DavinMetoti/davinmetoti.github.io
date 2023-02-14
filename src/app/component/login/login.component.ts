@@ -59,19 +59,21 @@ this.authService.getadmin().then(admin => this.admin = admin);
 this.authService.getUser().then(user => this.users = user);
 }
 masuk() {
+  let isFound = false;
   for (let i = 0; i < this.admin.length; i++) {
   if (this.username === this.admin[i].username && this.password === this.admin[i].password) {
-  this.loggedIn = true;
+  isFound = true;
   break;
   }
   }
   for (let i = 0; i < this.users.length; i++) {
   if (this.username === this.users[i].username && this.password === this.users[i].password) {
-  this.loggedIn = true;
+  isFound = true;
   break;
   }
   }
-  if (this.loggedIn) {
+  if (isFound) {
+  localStorage.setItem('isLoggedIn', 'true');
   this.router.navigate(['beranda']);
   } else {
   this.messageService.add({ severity: 'error', summary: 'Gagal Masuk', detail: 'Username atau Password salah' });

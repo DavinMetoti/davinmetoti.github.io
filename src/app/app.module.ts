@@ -117,6 +117,8 @@ import { RegisterComponent } from './component/register/register.component';
 import { TabelComponent } from './component/tabel/tabel.component';
 import { TableeditComponent } from './component/tableedit/tableedit.component';
 import { AccessDeniedComponent } from './component/access-denied/access-denied.component';
+import { AuthGuard } from './guards/auth.guard';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 
@@ -227,27 +229,14 @@ import { AccessDeniedComponent } from './component/access-denied/access-denied.c
         RegisterComponent,
         TabelComponent,
         TableeditComponent,
-        AccessDeniedComponent
+        AccessDeniedComponent,
+        DashboardComponent
 
        ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService,MessageService,ConfirmationService, 
-        {
-            provide: 'SocialAuthServiceConfig',
-            useValue: {
-                autoLogin: false,
-                providers: [
-                    {
-                        id: GoogleLoginProvider.PROVIDER_ID,
-                            provider: new GoogleLoginProvider(
-                            '1087229799420-o2ls3rh582fab94vli9aho1fhk1tpp44.apps.googleusercontent.com'
-                        )
-                    }
-                ]
-            } as SocialAuthServiceConfig,
-        }
+        PhotoService, ProductService, MenuService, ConfigService,MessageService,ConfirmationService,AuthGuard
     ],
     bootstrap: [AppComponent]
 })

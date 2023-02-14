@@ -10,6 +10,7 @@ import { TabelComponent } from './component/tabel/tabel.component';
 import { TableeditComponent } from './component/tableedit/tableedit.component';
 import { AccessDeniedComponent } from './component/access-denied/access-denied.component';
 import { AuthGuard } from './guards/auth.guard';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { AuthGuard } from './guards/auth.guard';
       {
         path: 'beranda', component: AppMainComponent,
         children: [
+          { path: 'dashboard', component: DashboardComponent },
           { path: 'permohonan', component: FormLayoutComponent },
           { path: 'pengajuan', component: FormpengajuanComponent },
           { path: 'calculator', component: CalculatorComponent },
