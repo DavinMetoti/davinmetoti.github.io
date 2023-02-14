@@ -1,3 +1,4 @@
+<p-confirmPopup></p-confirmPopup>
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
         <span>PORTAL DAVIN</span>
@@ -7,6 +8,6 @@
         <i class="pi pi-bars"></i>
     </a>
     <div class="layout-topbar-menu">
-            <button pButton pRipple type="button" (click)="logout()">Logout</button>
+            <button pButton pRipple type="button" (click)="confirm($event)" class="p-button-danger">Logout</button>
 
 </div>

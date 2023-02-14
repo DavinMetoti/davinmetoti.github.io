@@ -9,8 +9,10 @@ import { CalculatorComponent } from './component/calculator/calculator.component
 import { TabelComponent } from './component/tabel/tabel.component';
 import { TableeditComponent } from './component/tableedit/tableedit.component';
 import { AccessDeniedComponent } from './component/access-denied/access-denied.component';
-import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 @NgModule({
   imports: [
@@ -18,19 +20,20 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'memberbaru', component: RegisterComponent },
+      
       {
-        path: 'beranda', component: AppMainComponent,
+        path: '', component: AppMainComponent ,
         children: [
-          { path: 'dashboard', component: DashboardComponent },
+          { path: 'beranda', component: DashboardComponent },
           { path: 'permohonan', component: FormLayoutComponent },
           { path: 'pengajuan', component: FormpengajuanComponent },
           { path: 'calculator', component: CalculatorComponent },
-          { path: 'tabel', component: TabelComponent },
+          { path: 'tabel', component: TabelComponent, canActivate: [LoginGuard] },
           { path: 'tabeledit', component: TableeditComponent },
           { path: 'access-denied', component: AccessDeniedComponent }
         ]
       },
-      { path: '**', redirectTo: 'pages/notfound' }
+      { path: '**', redirectTo: 'pages/notfound' },
     ])
   ],
   exports: [RouterModule]
