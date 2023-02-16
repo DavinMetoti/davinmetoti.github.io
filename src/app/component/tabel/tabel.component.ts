@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Karyawan } from 'src/app/api/karyawan';
-import { UserService } from 'src/app/service/userdata.service';
+import { ProductService } from 'src/app/service/productservice';
 import { SortEvent } from 'primeng/api'
 import * as FileSaver from 'file-saver';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { Product } from 'src/app/api/product';
 
 
 @Component({
@@ -13,18 +14,18 @@ import "jspdf-autotable";
 })
 export class TabelComponent implements OnInit {
 
-  karyawan: Karyawan[];
+  products1: Product[];
   selectedKaryawan: Karyawan[];
+  productService: any;
 
-  constructor(private Userservice: UserService) { }
+  constructor(productService: ProductService) { }
 
   cols: any;
   exportColumns: any[];
   jsPDF: any;
 
   ngOnInit() {
-    this.Userservice.getKaryawan().then(data => this.karyawan = data);
-
+    this.productService.getProductsSmall().then(data => this.products1 = data);
   };
 
   customSort(event: SortEvent) {
@@ -59,7 +60,7 @@ export class TabelComponent implements OnInit {
 exportPdf() {
     import("jspdf-autotable").then(x => {
   const doc = new jsPDF('p','pt');
-  doc['autoTable'](this.exportColumns, this.karyawan);
+  doc['autoTable'](this.exportColumns, this.products1);
   // doc.autoTable(this.exportColumns, this.products);
   doc.save("Data_Karyawan.pdf");
     })
@@ -68,7 +69,7 @@ exportPdf() {
 
 exportExcel() {
   import("xlsx").then(xlsx => {
-      const worksheet = xlsx.utils.json_to_sheet(this.karyawan);
+      const worksheet = xlsx.utils.json_to_sheet(this.products1);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       this.saveAsExcelFile(excelBuffer, "Data Karyawan");

@@ -1,5 +1,5 @@
 
-<p-table #dt [columns]="cols" [value]="karyawan" selectionMode="multiple" [(selection)]="selectedKaryawan" class="col-12" [exportHeader]="'customExportHeader'" [tableStyle]="{'min-width': '50rem'}">
+<p-table #dt [columns]="cols" [value]="products1" selectionMode="multiple" [(selection)]="selectedKaryawan" class="col-12" [exportHeader]="'customExportHeader'" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="caption">
         <div class="flex">
             <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
@@ -21,10 +21,10 @@
     </ng-template>
     <ng-template pTemplate="body" class="col-12" let-karyawan>
         <tr>
-            <td>{{karyawan.nama}}</td>
-            <td>{{karyawan.email}}</td>
-            <td>{{karyawan.Cabang}}</td>
-            <td>{{karyawan.Divisi}}</td>
+            <td>{{products1.nama}}</td>
+            <td>{{products1.email}}</td>
+            <td>{{products1.Cabang}}</td>
+            <td>{{products1.Divisi}}</td>
         </tr>
     </ng-template>
 </p-table>

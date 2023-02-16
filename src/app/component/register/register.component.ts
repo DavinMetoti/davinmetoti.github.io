@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/service/userdata.service';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-register',
@@ -27,53 +27,56 @@ padding:1rem;
 
 })
 export class RegisterComponent implements OnInit {
-  loading = [false, false, false, false]
+  display: boolean = false; // tambahkan variabel display
 
-  username : any;
-  email : any;
-  password : any
+  selectedcabang: any;
+  cabang: any;
+  selecteddevisi: any;
+  devisi: any;
+  username: string;
+  email: string;
+  password: string;
   confirmPassword: string;
-  user:any;
-  mail:any;
-  pass:any;
-  conf:any;
-  array:[];
+  array: any[] = [];
+  user: any = {};
 
-  register = {
-    namausername:null,
-    emaill: null,
-  }
-  passregister = {
-    paspassword: null,
-    compassword: null,
-  }
   constructor(
-    private UserService: UserService,  
-    private router: Router, 
+    private router: Router,
     private confirmationService: ConfirmationService,
-    private messageService:MessageService ) { }
+    private messageService: MessageService,
+    private dataService: DataService,
+  ) { }
 
-  ngOnInit() {
-  }
-  submit(u,e,p,c)
-  {
-    if(u==null || u=="" || e==null || e=="" || p==null || p=="" || c==null || c=="")
-  {
-      this.messageService.add({severity:'warn', summary:'Perhatian', detail: ''});
-  } 
-  else
-      this.confirmationService.confirm({
-        message: 'Apakah anda yakin data anda benar',
-        accept: () => {
-          this.router.navigate(['login'])
-          this.register.namausername=u;
-          this.register.emaill=e;
-          this.passregister.paspassword=p;
-          this.passregister.compassword=c;
-          let array = [];
-          array.push(this.register, this.passregister);
-          console.log(array)
+  ngOnInit() {}
+
+  register() {
+    if (this.password !== this.confirmPassword) {
+      this.messageService.add({severity: 'error', summary: 'Error', detail: 'Password and confirm password does not match.'});
+      return;
+    }
+
+    this.display = true; // tampilkan spinner
+    const user = {
+      username: this.username,
+      email: this.email,
+      password: this.password
+    };
+
+    this.dataService.addUser(user).subscribe(
+      (response) => {
+        this.display = false; // sembunyikan spinner
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'User registered successfully.'});
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        this.display = false; // sembunyikan spinner
+
+        if (error.status === 409) {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Username or email already exists.'});
+        } else {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Failed to register user.'});
         }
-    });
+      }
+    );
   }
 }

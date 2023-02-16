@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/service/app.config.service';
 import { AuthService } from 'src/app/service/auth.service';
 
+
 @Component({
 selector: 'app-login',
 templateUrl: './login.component.html',
@@ -37,12 +38,21 @@ loggedIn: boolean;
 admin: any;
 users: any;
 
+datalogin = {
+  username:null,
+  password:null,
+}
+
+user:any=[]
+
 constructor(
 private router: Router,
 private messageService: MessageService,
 private configService: ConfigService,
-private authService: AuthService
-) { }
+private authService: AuthService,
+
+) {
+ }
 
 ngOnDestroy(): void {
 if (this.subscription) {
@@ -58,7 +68,11 @@ this.config = config;
 this.authService.getadmin().then(admin => this.admin = admin);
 this.authService.getUser().then(user => this.users = user);
 }
-masuk() {
+masuk(u,p) {
+  this.datalogin.username= u;
+  this.datalogin.password= p;
+  console.log('datalogin',this.user);
+  
   let isFound = false;
   for (let i = 0; i < this.admin.length; i++) {
   if (this.username === this.admin[i].username && this.password === this.admin[i].password) {
@@ -82,5 +96,6 @@ masuk() {
   
   masukdaftar(): void {
   this.router.navigate(['memberbaru'])
-  }
+  };
+
 }

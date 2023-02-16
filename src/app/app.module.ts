@@ -119,6 +119,7 @@ import { TableeditComponent } from './component/tableedit/tableedit.component';
 import { AccessDeniedComponent } from './component/access-denied/access-denied.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -212,6 +213,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
         StyleClassModule,
         TableModule,
         SocialLoginModule,
+        ProgressSpinnerModule
 
     ],
     declarations: [

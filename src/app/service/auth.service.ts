@@ -1,41 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Admin, User } from '../api/userlogin';
 import { Router } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
-providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-constructor(
-private http: HttpClient,
-private router: Router
-) { }
+  private registerUrl = 'http://10.224.0.115/API/apiuser/register.php';
 
-logout() {
-localStorage.removeItem('isLoggedIn');
-this.router.navigate(['login']);
-}
+  constructor(private http: HttpClient, private router: Router) {}
 
-getadmin() {
-return this.http.get<any>('assets/demo/data/User.json')
-.toPromise()
-.then(res => res.admin as Admin[])
-.then(data => data);
-}
+  register(username: string, password: string): Observable<any> {
+    const body = { username: username, password: password };
+    return this.http.post<any>(this.registerUrl, body).pipe(
+      map(data => {
+        localStorage.setItem('isLoggedIn', 'true');
+        return data;
+      }),
+      catchError(error => {
+        return throwError('Registration failed. Please try again.');
+      })
+    );
+  }
 
-getUser() {
-return this.http.get<any>('assets/demo/data/User.json')
-.toPromise()
-.then(res => res.user as User[])
-.then(header => header);
-}
+  logout() {
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['login']);
+  }
 
-IsLoggedIn() {
-localStorage.setItem('isLoggedIn', 'true');
-}
+  getadmin() {
+    return this.http
+      .get<any>('http://10.224.0.115/API/apiuser/api.php')
+      .toPromise()
+      .then(data => data);
+  }
 
-getIsLoggedIn() {
-return localStorage.getItem('isLoggedIn');
-}
+  getUser() {
+    return this.http
+      .get<any>('http://10.224.0.115/API/apiuser/api.php')
+      .toPromise()
+      .then(header => header);
+  }
+
 }
