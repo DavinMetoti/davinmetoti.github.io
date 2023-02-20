@@ -40,6 +40,15 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Tabel Biasa', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['tabeledit']},
                     
                 ]
+            },
+            {
+                label: 'Admin',
+                items: [
+                    {label: 'Pendaftaran Hak Akses', icon: 'pi pi-fw pi-user-plus', routerLink: ['form_hak_akses']},
+                    {label: 'User', icon: 'pi pi-fw pi-user', routerLink: ['datapengguna']},
+                    {label: 'Session', icon: 'pi pi-fw pi-plus', routerLink: ['data']},
+                    
+                ]
             }
         ]
     }

@@ -10,6 +10,9 @@ import { TabelComponent } from './component/tabel/tabel.component';
 import { TableeditComponent } from './component/tableedit/tableedit.component';
 import { AccessDeniedComponent } from './component/access-denied/access-denied.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { FormulirhakaksesComponent } from './admin/formulirhakakses/formulirhakakses.component';
+import { DatauserComponent } from './admin/datauser/datauser.component';
+import { DataComponent } from './admin/data/data.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
@@ -22,15 +25,24 @@ import { LoginGuard } from './guards/login.guard';
       { path: 'memberbaru', component: RegisterComponent },
       
       {
-        path: '', component: AppMainComponent ,
+        path: '', component: AppMainComponent , canActivate: [LoginGuard],
         children: [
           { path: 'beranda', component: DashboardComponent },
           { path: 'permohonan', component: FormLayoutComponent },
           { path: 'pengajuan', component: FormpengajuanComponent },
           { path: 'calculator', component: CalculatorComponent },
-          { path: 'tabel', component: TabelComponent, canActivate: [LoginGuard] },
-          { path: 'tabeledit', component: TableeditComponent },
+          { path: 'tabel', component: TabelComponent, },
+          { path: 'tabeledit', component: TableeditComponent},
           { path: 'access-denied', component: AccessDeniedComponent }
+        ]
+      },
+      {
+        path: '', component: AppMainComponent ,canActivate: [AuthGuard],
+        data: { expectedRole: 'admin' },
+        children: [
+          { path: 'form_hak_akses', component: FormulirhakaksesComponent},
+          { path: 'datapengguna',component: DatauserComponent},
+          { path: 'data',component: DataComponent},
         ]
       },
       { path: '**', redirectTo: 'pages/notfound' },

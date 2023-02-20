@@ -8,29 +8,27 @@ import { DataService } from 'src/app/service/data.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styles:[`
-:host ::ng-deep .p-password input {
-width: 100%;
-padding:1rem;
-}
-:host ::ng-deep .pi-eye{
-  transform:scale(1.6);
-  margin-right: 1rem;
-  color: var(--primary-color) !important;
-}
-
-:host ::ng-deep .pi-eye-slash{
-  transform:scale(1.6);
-  margin-right: 1rem;
-  color: var(--primary-color) !important;
-}
-`]
-
+    :host ::ng-deep .p-password input {
+      width: 100%;
+      padding:1rem;
+    }
+    :host ::ng-deep .pi-eye{
+      transform:scale(1.6);
+      margin-right: 1rem;
+      color: var(--primary-color) !important;
+    }
+    :host ::ng-deep .pi-eye-slash{
+      transform:scale(1.6);
+      margin-right: 1rem;
+      color: var(--primary-color) !important;
+    }
+  `]
 })
 export class RegisterComponent implements OnInit {
   display: boolean = false; // tambahkan variabel display
 
-  selectedcabang: any;
-  cabang: any;
+  selectedhak: any;
+  hakakses: any;
   selecteddevisi: any;
   devisi: any;
   username: string;
@@ -39,6 +37,11 @@ export class RegisterComponent implements OnInit {
   confirmPassword: string;
   array: any[] = [];
   user: any = {};
+
+
+  dropdownhakakses = [
+    { name: 'Admin', code: 'C000' },
+    { name: 'User', code: 'C001' }]
 
   constructor(
     private router: Router,
@@ -54,22 +57,19 @@ export class RegisterComponent implements OnInit {
       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Password and confirm password does not match.'});
       return;
     }
-
-    this.display = true; // tampilkan spinner
     const user = {
       username: this.username,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role:this.hakakses.name
     };
 
     this.dataService.addUser(user).subscribe(
       (response) => {
-        this.display = false; // sembunyikan spinner
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'User registered successfully.'});
         this.router.navigate(['/login']);
       },
       (error) => {
-        this.display = false; // sembunyikan spinner
 
         if (error.status === 409) {
           this.messageService.add({severity: 'error', summary: 'Error', detail: 'Username or email already exists.'});

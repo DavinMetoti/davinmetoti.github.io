@@ -4,98 +4,84 @@ import { MessageService } from 'primeng/api';
 import { AppConfig } from 'src/app/api/appconfig';
 import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/service/app.config.service';
-import { AuthService } from 'src/app/service/auth.service';
-
+import { DataService } from 'src/app/service/data.service';
+import { DbService } from 'src/app/service/db.service';
 
 @Component({
-selector: 'app-login',
-templateUrl: './login.component.html',
-styles:[`
-:host ::ng-deep .p-password input {
-width: 100%;
-padding:1rem;
-}
-:host ::ng-deep .pi-eye{
-transform:scale(1.6);
-margin-right: 1rem;
-color: var(--primary-color) !important;
-}
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styles:[`
+    :host ::ng-deep .p-password input {
+      width: 100%;
+      padding:1rem;
+    }
+    :host ::ng-deep .pi-eye{
+      transform:scale(1.6);
+      margin-right: 1rem;
+      color: var(--primary-color) !important;
+    }
 
-:host ::ng-deep .pi-eye-slash{
-transform:scale(1.6);
-margin-right: 1rem;
-color: var(--primary-color) !important;
-}
-`]
+    :host ::ng-deep .pi-eye-slash{
+      transform:scale(1.6);
+      margin-right: 1rem;
+      color: var(--primary-color) !important;
+    }
+  `]
 })
 export class LoginComponent implements OnInit, OnDestroy {
-valChech: string[] = ['remember']
-username: any;
-password:any;
-config: AppConfig
-subscription: Subscription
-loggedIn: boolean;
-admin: any;
-users: any;
+  valChech: string[] = ['remember']
+  username: string;
+  password: string;
+  config: AppConfig
+  subscription: Subscription
+  public status: string;
 
-datalogin = {
-  username:null,
-  password:null,
-}
+  constructor(
+    private router: Router,
+    private messageService: MessageService,
+    private configService: ConfigService,
+    private dataService: DataService,
+    private dbservice:DbService,
+  ) {}
 
-user:any=[]
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
-constructor(
-private router: Router,
-private messageService: MessageService,
-private configService: ConfigService,
-private authService: AuthService,
+  ngOnInit(): void {
+    this.dbservice.authenticate().subscribe(response => {
+      console.log(response);
+      this.status = response.result;
+    })
 
-) {
- }
+    this.config = this.configService.config;
+    this.subscription = this.configService.configUpdate$.subscribe(config => {
+      this.config = config;
+    });
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  }
 
-ngOnDestroy(): void {
-if (this.subscription) {
-this.subscription.unsubscribe();
-}
-}
+  masuk(): void {
+    this.dataService.login(this.username, this.password).subscribe(
+      (response) => {
+        if (response.success) {
+          // handle successful login
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('role', JSON.stringify(response.data.user.role));
+          this.router.navigate(['/beranda']);
+        }
+      },
+      (error) => {
+        // handle login error
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Invalid email or password.'});
+      }
+    );
+  }
 
-ngOnInit(): void {
-this.config = this.configService.config;
-this.subscription = this.configService.configUpdate$.subscribe(config => {
-this.config = config;
-});
-this.authService.getadmin().then(admin => this.admin = admin);
-this.authService.getUser().then(user => this.users = user);
-}
-masuk(u,p) {
-  this.datalogin.username= u;
-  this.datalogin.password= p;
-  console.log('datalogin',this.user);
-  
-  let isFound = false;
-  for (let i = 0; i < this.admin.length; i++) {
-  if (this.username === this.admin[i].username && this.password === this.admin[i].password) {
-  isFound = true;
-  break;
-  }
-  }
-  for (let i = 0; i < this.users.length; i++) {
-  if (this.username === this.users[i].username && this.password === this.users[i].password) {
-  isFound = true;
-  break;
-  }
-  }
-  if (isFound) {
-  localStorage.setItem('isLoggedIn', 'true');
-  this.router.navigate(['beranda']);
-  } else {
-  this.messageService.add({ severity: 'error', summary: 'Gagal Masuk', detail: 'Username atau Password salah' });
-  }
-  }
-  
   masukdaftar(): void {
-  this.router.navigate(['memberbaru'])
-  };
-
+    this.router.navigate(['memberbaru']);
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Karyawan } from 'src/app/api/karyawan';
 import { ProductService } from 'src/app/service/productservice';
 import { SortEvent } from 'primeng/api'
 import * as FileSaver from 'file-saver';
@@ -15,10 +14,10 @@ import { Product } from 'src/app/api/product';
 export class TabelComponent implements OnInit {
 
   products1: Product[];
-  selectedKaryawan: Karyawan[];
-  productService: any;
+  selectedKaryawan: Product[];
 
-  constructor(productService: ProductService) { }
+
+  constructor(private productService: ProductService) { }
 
   cols: any;
   exportColumns: any[];
@@ -47,11 +46,12 @@ export class TabelComponent implements OnInit {
 
         return (event.order * result);
     });
+
     this.cols = [
-      {  header: 'NAMA', field: 'nama',},
-      {  header: 'EMAIL', field: 'email', },
-      { header: 'CABANG',field: 'Cabang',  },
-      { header: 'DIVISI',field: 'Divisi',  }
+      {  header: 'NAMA', field: 'code',},
+      {  header: 'EMAIL', field: 'name', },
+      { header: 'CABANG',field: 'category',  },
+      { header: 'DIVISI',field: 'quantity',  }
   ];
 
   this.exportColumns = this.cols.map(col => ({title: ['Nama','Email','Cabang','Divisi'], dataKey: col.field}));

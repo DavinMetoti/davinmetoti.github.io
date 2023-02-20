@@ -120,6 +120,9 @@ import { AccessDeniedComponent } from './component/access-denied/access-denied.c
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { FormulirhakaksesComponent } from './admin/formulirhakakses/formulirhakakses.component';
+import { DatauserComponent } from './admin/datauser/datauser.component';
+import { DataComponent } from './admin/data/data.component';
 
 
 
@@ -232,7 +235,10 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
         TabelComponent,
         TableeditComponent,
         AccessDeniedComponent,
-        DashboardComponent
+        DashboardComponent,
+        FormulirhakaksesComponent,
+        DatauserComponent,
+        DataComponent
 
        ],
     providers: [

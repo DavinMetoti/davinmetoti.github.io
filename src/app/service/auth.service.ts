@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private registerUrl = 'http://10.224.0.115/API/apiuser/register.php';
+  private registerUrl = 'localhost:3000';
 
   constructor(private http: HttpClient, private router: Router) {}
 
