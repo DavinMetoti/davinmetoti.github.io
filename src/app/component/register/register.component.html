@@ -4,9 +4,12 @@
         <div class="h-full w-full m-0 py-7 px-4" style="border-radius:53px; background: rgba(255, 255, 255, 0.3);">
           <div class="text-center mb-5">
             <div class="text-white text-900 text-3xl font-medium mb-3">Registrasi</div>
-            <span class="text-white text-600 font-medium">Silahkan data berikut dengan benar</span>
+            <span class="text-white text-600 font-medium">Silahkan isi data berikut dengan benar</span>
           </div>
           <div class="w-full md:w-10 mx-auto">
+            <label for="namalengkap" class="block text-900 text-white text-xl font-medium mb-2">Nama lengkap</label>
+            <input id="namalengkap" type="text" placeholder="Nama Lengkap" [(ngModel)]="namalengkap" pInputText class="w-full mb-3" style="padding:1rem;">
+
             <label for="username" class="block text-900 text-white text-xl font-medium mb-2">Username</label>
             <input id="username" type="text" placeholder="Username" [(ngModel)]="username" pInputText class="w-full mb-3" style="padding:1rem;">
   
@@ -19,14 +22,21 @@
             <label for="password2" class="block text-900 font-medium text-white text-xl mb-2">Confirm Password</label>
             <p-password id="password2" [(ngModel)]="confirmPassword" placeholder="Confirm Password" [toggleMask]="true" [feedback]="false" styleClass="w-full mb-3"></p-password>
   
+            <label for="Cabang" class="block text-900 font-medium text-white text-xl mb-2">Cabang</label>
+            <p-dropdown id="Cabang" styleClass="w-full mb-3" [options]="dropdowncabang"  [(ngModel)]="selectedcabang" [(ngModel)]="cabang" optionLabel="nama" placeholder="Pilih Cabang"></p-dropdown>
+
+            <label for="Divisi" class="block text-900 font-medium text-white text-xl mb-2">Divisi</label>
+            <p-dropdown id="Divisi" styleClass="w-full mb-3" [options]="dropdowndivisi"  [(ngModel)]="selecteddivisi" [(ngModel)]="divisi" optionLabel="nama" placeholder="Pilih Cabang"></p-dropdown>
+            
             <label for="Hak Akses" class="block text-900 font-medium text-white text-xl mb-2">Hak Akses</label>
-            <p-dropdown id="Hak Akses" styleClass="w-full mb-3" [options]="dropdownhakakses"  [(ngModel)]="selectedhak" [(ngModel)]="hakakses" optionLabel="name" placeholder="Pilih Hak Akses"></p-dropdown>                     
+            <p-dropdown id="Hak Akses" styleClass="w-full mb-3" [options]="dropdownhakakses"  [(ngModel)]="selectedhak" [(ngModel)]="hakakses" optionLabel="name" placeholder="Pilih Hak Akses"></p-dropdown>
+
             <div class="field">
               <p-confirmDialog header="Konfirmasi" icon="pi pi-exclamation-triangle"></p-confirmDialog>
               <button pButton (click)="register()" style="background-color:rgb(0,165,135) ; border-color:rgb(0, 118, 98) ;" label="Daftar" class="w-full p-3 text-xl" ></button>
             </div>
             <p-toast position="top-center"></p-toast>
-<p-dialog header="Register" [(visible)]="display">
+<p-dialog header="Register">
     <div style="text-align:center">
       <p-progressSpinner strokeWidth="4" fill="#EEEEEE" animationDuration=".8s"></p-progressSpinner>
     </div>

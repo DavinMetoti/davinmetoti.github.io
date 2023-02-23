@@ -1,0 +1,36 @@
+<h3>DAFTAR HAK AKSES MENGETAHUI</h3>
+<p-table [value]="kacabdata" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Tanggal Pembuatan</th>
+            <th>Nama Lengkap</th>
+            <th>Cabang</th>
+            <th>Divisi</th>
+            <th>Koordinator</th>
+            <th>Preview</th>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-kacabdata>
+        <tr>
+            <td>{{kacabdata.update_at  | date:'dd MMMM yyyy' }}</td>
+            <td>{{kacabdata.nama_lengkap}}</td>
+            <td>{{kacabdata.cabang}}</td>
+            <td>{{kacabdata.divisi}}</td>
+            <td>{{kacabdata.koordinator}}</td>
+            <td><button pButton type="button" icon="pi pi-eye" class="p-button-success" (click)="showDialog(kacabdata)"></button></td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-dialog [(visible)]="display" header="Pengajuan Hak Akses Cabang {{ pilihankacab?.cabang }}" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <div *ngIf="pilihankacab">
+      <p><strong>Nama Lengkap:</strong> {{ pilihankacab.nama_lengkap }}</p>
+      <p><strong>Email:</strong> {{ pilihankacab.email }}</p>
+      <p><strong>NIP:</strong> {{ pilihankacab.nip }}</p>
+      <p><strong>Telp:</strong> {{ pilihankacab.telp }}</p>
+      <p><strong>Cabang:</strong> {{ pilihankacab.cabang }}</p>
+      <p><strong>Divisi:</strong> {{ pilihankacab.divisi }}</p>
+      <p><strong>Hak Akses:</strong> {{ pilihankacab.hakakses }}</p>
+      <p><strong>Aplikasi:</strong> {{ pilihankacab.aplikasi }}</p>
+      <p>Saya sebagai pemohon menyatakan bahwa semua data yang telah saya berikan di atas adalah benar dan bertanggungjawab penuh atas penggunaannya serta menyetujui ketentuan lain yang berlaku dalam penggunaan sistem informasi di PT CITO PUTRA UTAMA.</p>     
+    </div>
+    </p-dialog>

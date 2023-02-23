@@ -90,6 +90,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { ConfirmationService } from 'primeng/api';
 import {TableModule} from 'primeng/table';
+
  
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
@@ -123,6 +124,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { FormulirhakaksesComponent } from './admin/formulirhakakses/formulirhakakses.component';
 import { DatauserComponent } from './admin/datauser/datauser.component';
 import { DataComponent } from './admin/data/data.component';
+import { PersetujuanKoordinatorComponent } from './admin/persetujuan-koordinator/persetujuan-koordinator.component';
+import { KacabComponent } from './admin/kacab/kacab.component';
+import { HakaksesComponent } from './admin/hakakses/hakakses.component';
+import { DeletedComponent } from './admin/deleted/deleted.component';
+import { PendaftaranComponent } from './admin/pendaftaran/pendaftaran.component';
 
 
 
@@ -238,7 +244,12 @@ import { DataComponent } from './admin/data/data.component';
         DashboardComponent,
         FormulirhakaksesComponent,
         DatauserComponent,
-        DataComponent
+        DataComponent,
+        PersetujuanKoordinatorComponent,
+        KacabComponent,
+        HakaksesComponent,
+        DeletedComponent,
+        PendaftaranComponent
 
        ],
     providers: [

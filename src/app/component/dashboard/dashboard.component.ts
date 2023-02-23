@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  nama:any;
   constructor() { }
 
   ngOnInit(): void {
+     this.nama=localStorage.getItem('nama')
   }
 
 }

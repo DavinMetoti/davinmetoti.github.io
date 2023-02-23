@@ -1,0 +1,44 @@
+<h3>Daftar Persetujuan Koordinator</h3>
+<p-table [value]="hakAksesKoordinator">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>No</th>
+      <th>Tanggal Pembuatan</th>
+      <th>Nama Lengkap</th>
+      <th>Cabang</th>
+      <th>Divisi</th>
+      <th>Preview</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-hakAksesKoordinator>
+    <tr>
+      <td>{{ hakAksesKoordinator.id}}</td>
+      <td>{{ hakAksesKoordinator.create_at | date:'dd MMMM yyyy' }}</td>
+      <td>{{ hakAksesKoordinator.nama_lengkap }}</td>
+      <td>{{ hakAksesKoordinator.cabang }}</td>
+      <td>{{ hakAksesKoordinator.divisi }}</td>
+      <td><button pButton type="button" icon="pi pi-plus" label="accept" class="p-button-success" (click)="showDialog(hakAksesKoordinator)"></button></td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-dialog [(visible)]="display" header="Pengajuan Hak Akses Cabang {{ selectedHakAksesKoordinator?.cabang }}" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <div *ngIf="selectedHakAksesKoordinator">
+      <p><strong>Nama Lengkap:</strong> {{ selectedHakAksesKoordinator.nama_lengkap }}</p>
+      <p><strong>Email:</strong> {{ selectedHakAksesKoordinator.email }}</p>
+      <p><strong>NIP:</strong> {{ selectedHakAksesKoordinator.nip }}</p>
+      <p><strong>Telp:</strong> {{ selectedHakAksesKoordinator.telp }}</p>
+      <p><strong>Cabang:</strong> {{ selectedHakAksesKoordinator.cabang }}</p>
+      <p><strong>Divisi:</strong> {{ selectedHakAksesKoordinator.divisi }}</p>
+      <p><strong>Hak Akses:</strong> {{ selectedHakAksesKoordinator.hakakses }}</p>
+      <p><strong>Aplikasi:</strong> {{ selectedHakAksesKoordinator.aplikasi }}</p>
+      <p>Saya sebagai pemohon menyatakan bahwa semua data yang telah saya berikan di atas adalah benar dan bertanggungjawab penuh atas penggunaannya serta menyetujui ketentuan lain yang berlaku dalam penggunaan sistem informasi di PT CITO PUTRA UTAMA.</p>
+      <div class="p-fluid field">
+        <label for="namakoordinator">Nama Koordinator</label>
+        <input pInputText type="text" id="namakoordinator" placeholder="Nama Koordinator" [(ngModel)]="koordinator" required>
+      </div>
+      <div class="field">
+        <p-button pRipple type="button" class="p-button-success" (click)="menyetujui(koordinator)" >Menyetujui</p-button>
+      </div>      
+</div>
+</p-dialog>
+<p-toast position="top-left"></p-toast>

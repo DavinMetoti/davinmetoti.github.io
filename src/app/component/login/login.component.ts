@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   valChech: string[] = ['remember']
   username: string;
   password: string;
+  nama_lengkap:string;
   config: AppConfig
   subscription: Subscription
   public status: string;
@@ -51,17 +52,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.dbservice.authenticate().subscribe(response => {
-      console.log(response);
-      this.status = response.result;
-    })
-
     this.config = this.configService.config;
     this.subscription = this.configService.configUpdate$.subscribe(config => {
       this.config = config;
     });
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('nama')
   }
 
   masuk(): void {
@@ -71,16 +68,19 @@ export class LoginComponent implements OnInit, OnDestroy {
           // handle successful login
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('role', JSON.stringify(response.data.user.role));
+          localStorage.setItem('nama', JSON.stringify(response.data.user.nama_lengkap));
           this.router.navigate(['/beranda']);
         }
       },
       (error) => {
-        // handle login error
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Invalid email or password.'});
+        if (error.status === 401) {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'username dan password salah'});
+        } else if(error.status === 402){
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'akun anda belum aktif'});
+        }
       }
     );
   }
-
   masukdaftar(): void {
     this.router.navigate(['memberbaru']);
   }

@@ -1,54 +1,77 @@
 {
     "data": [
         {
-            "key": "0",
-            "label": "Documents",
-            "data": "Documents Folder",
-            "icon": "pi pi-fw pi-inbox",
+            "label": "TEKNIS",
+            "data": "TEKNIS",
             "children": [{
-                "key": "0-0",
-                "label": "Work",
-                "data": "Work Folder",
-                "icon": "pi pi-fw pi-cog",
-                "children": [{ "key": "0-0-0", "label": "Expenses.doc", "icon": "pi pi-fw pi-file", "data": "Expenses Document" }, { "key": "0-0-1", "label": "Resume.doc", "icon": "pi pi-fw pi-file", "data": "Resume Document" }]
+                "label": "KABAG",
+                "data": "TEKNIS : KABAG"
             },
             {
-                "key": "0-1",
-                "label": "Home",
-                "data": "Home Folder",
-                "icon": "pi pi-fw pi-home",
-                "children": [{ "key": "0-1-0", "label": "Invoices.txt", "icon": "pi pi-fw pi-file", "data": "Invoices for this month" }]
-            }]
+                "label": "STAFF",
+                "data": "TEKNIS : STAFF"
+            },
+            {
+                "label": "VERIFIKATOR",
+                "data": "TEKNIS : VERIFIKATOR"
+            }
+        ]
         },
         {
-            "key": "1",
-            "label": "Events",
-            "data": "Events Folder",
-            "icon": "pi pi-fw pi-calendar",
+            "label": "SAMPLING",
+            "data": "SAMPLING",
             "children": [
-                { "key": "1-0", "label": "Meeting", "icon": "pi pi-fw pi-calendar-plus", "data": "Meeting" },
-                { "key": "1-1", "label": "Product Launch", "icon": "pi pi-fw pi-calendar-plus", "data": "Product Launch" },
-                { "key": "1-2", "label": "Report Review", "icon": "pi pi-fw pi-calendar-plus", "data": "Report Review" }]
+                {  "label": "KABAG",  "data": "SAMPLING : KABAG" },
+                {  "label": "STAFF",  "data": "SAMPLING : STAFF" }]
         },
         {
-            "key": "2",
-            "label": "Movies",
-            "data": "Movies Folder",
-            "icon": "pi pi-fw pi-star",
-            "children": [{
-                "key": "2-0",
-                "icon": "pi pi-fw pi-star",
-                "label": "Al Pacino",
-                "data": "Pacino Movies",
-                "children": [{ "key": "2-0-0", "label": "Scarface", "icon": "pi pi-fw pi-video", "data": "Scarface Movie" }, { "key": "2-0-1", "label": "Serpico", "icon": "pi pi-fw pi-video", "data": "Serpico Movie" }]
-            },
-            {
-                "key": "2-1",
-                "label": "Robert De Niro",
-                "icon": "pi pi-fw pi-star",
-                "data": "De Niro Movies",
-                "children": [{ "key": "2-1-0", "label": "Goodfellas", "icon": "pi pi-fw pi-video", "data": "Goodfellas Movie" }, { "key": "2-1-1", "label": "Untouchables", "icon": "pi pi-fw pi-video", "data": "Untouchables Movie" }]
-            }]
+            "label": "MARKETING",
+            "data": "MARKETING",
+            "children": [
+                {  "label": "KABAG",  "data": "MARKETING : KABAG" },
+                {  "label": "STAFF",  "data": "MARKETING : STAFF" }]
+        },
+        {
+            "label": "PELAYANAN",
+            "data": "PELAYANAN",
+            "children": [
+                {  "label": "KABAG",  "data": "PELAYANAN : KABAG" },
+                {  "label": "CUSTOMER SERVICE",  "data": "PELAYANAN : CUSTOMER SERVICE" }]
+        },
+        {
+            "label": "MCU",
+            "data": "MCU",
+            "children": [
+                {  "label": "KABAG",  "data": "MCU : KABAG" },
+                {  "label": "STAFF",  "data": "MCU : STAFF" }]
+        },
+        {
+            "label": "PENUNJANG",
+            "data": "PENUNJANG",
+            "children": [
+                {  "label": "RADIOLOGI",  "data": "PENUNJANG : RADIOLOGI" },
+                {  "label": "NON RADIOLOGI",  "data": "PENUNJANG : NON RADIOLOGI" }]
+        },
+        {
+            "label": "KEPALA CABANG",
+            "data": "KEPALA CABANG"
+        },
+        {
+            "label": "PERAWAT",
+            "data": "PERAWAT"
+        },
+        {
+            "label": "DOKTER",
+            "data": "DOKTER"
+        },
+        {
+            "label": "RUJUKAN",
+            "data": "RUJUKAN"
+        },
+        {
+            "label": "IT CABANG",
+            "data": "IT CABANG"
         }
+        
     ]
 }

@@ -1,3 +1,4 @@
+<p-toast position="top-center"></p-toast>
 <p-table [value]="users" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="header">
       <tr>
@@ -17,13 +18,8 @@
         <td>{{user.cabang}}</td>
         <td>{{user.divisi}}</td>
         <td>
-            <button pButton 
-                    [ngStyle]="{'width': '100px'}"
-                    [disabled]="user.status === 0 || user.status === 1 "
-                    [style.background-color]="user.status === 1 ? 'green' : 'red'">
-              {{ user.status === 1 ? 'active' : 'nonactive' }}
-            </button>
-          </td>
+          <p-dropdown [options]="statusOptions" [(ngModel)]="user.status"></p-dropdown>
+        </td>
         <td>
           <p-dropdown [options]="roleOptions" [(ngModel)]="user.role"></p-dropdown>
         </td>

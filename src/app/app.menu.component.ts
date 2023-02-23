@@ -35,6 +35,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {label: 'Form Permohonan', icon: 'pi pi-fw pi-id-card', routerLink: ['permohonan']},
                     {label: 'Form Pengajuan', icon: 'pi pi-fw pi-check-square', routerLink: ['pengajuan']},
+                    {label: 'Pendaftaran Hak Akses', icon: 'pi pi-fw pi-user-plus', routerLink: ['form_hak_akses']},
                     {label: 'Table', icon: 'pi pi-fw pi-table', routerLink: ['tabel']},
                     {label: 'Kalkulator', icon: 'pi pi-fw pi-bookmark', routerLink: ['calculator']},
                     {label: 'Tabel Biasa', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['tabeledit']},
@@ -44,9 +45,14 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Admin',
                 items: [
-                    {label: 'Pendaftaran Hak Akses', icon: 'pi pi-fw pi-user-plus', routerLink: ['form_hak_akses']},
+                   
                     {label: 'User', icon: 'pi pi-fw pi-user', routerLink: ['datapengguna']},
+                    {label: 'Nonaktif User', icon: 'pi pi-fw pi-user-minus', routerLink: ['deletedpengguna']},
+                    {label: 'Daftar Permintaan', icon: 'pi pi-fw pi-plus', routerLink: ['hakakses']},
                     {label: 'Session', icon: 'pi pi-fw pi-plus', routerLink: ['data']},
+                    {label: 'Koordinator', icon: 'pi pi-fw pi-user-edit', routerLink: ['koordinator']},
+                    {label: 'Kepala Cabang', icon: 'pi pi-fw pi-users', routerLink: ['kacab']},
+                    {label: 'Pendaftaran Pasien', icon: 'pi pi-fw pi-plus-circel', routerLink: ['pendaftaran']},
                     
                 ]
             }

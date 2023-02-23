@@ -13,9 +13,14 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { FormulirhakaksesComponent } from './admin/formulirhakakses/formulirhakakses.component';
 import { DatauserComponent } from './admin/datauser/datauser.component';
 import { DataComponent } from './admin/data/data.component';
+import { PersetujuanKoordinatorComponent } from './admin/persetujuan-koordinator/persetujuan-koordinator.component';
+import { KacabComponent } from './admin/kacab/kacab.component';
+import { DeletedComponent } from './admin/deleted/deleted.component';
+import { PendaftaranComponent } from './admin/pendaftaran/pendaftaran.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { HakaksesComponent } from './admin/hakakses/hakakses.component';
 
 @NgModule({
   imports: [
@@ -25,11 +30,12 @@ import { LoginGuard } from './guards/login.guard';
       { path: 'memberbaru', component: RegisterComponent },
       
       {
-        path: '', component: AppMainComponent , canActivate: [LoginGuard],
+        path: '', component: AppMainComponent ,
         children: [
           { path: 'beranda', component: DashboardComponent },
           { path: 'permohonan', component: FormLayoutComponent },
           { path: 'pengajuan', component: FormpengajuanComponent },
+          { path: 'form_hak_akses', component: FormulirhakaksesComponent},
           { path: 'calculator', component: CalculatorComponent },
           { path: 'tabel', component: TabelComponent, },
           { path: 'tabeledit', component: TableeditComponent},
@@ -37,12 +43,15 @@ import { LoginGuard } from './guards/login.guard';
         ]
       },
       {
-        path: '', component: AppMainComponent ,canActivate: [AuthGuard],
-        data: { expectedRole: 'admin' },
+        path: '', component: AppMainComponent ,
         children: [
-          { path: 'form_hak_akses', component: FormulirhakaksesComponent},
           { path: 'datapengguna',component: DatauserComponent},
+          { path: 'deletedpengguna',component: DeletedComponent},
           { path: 'data',component: DataComponent},
+          {path : 'koordinator',component: PersetujuanKoordinatorComponent},
+          {path : 'kacab',component: KacabComponent},
+          {path : 'hakakses',component: HakaksesComponent},
+          {path : 'pendaftaran',component: PendaftaranComponent}
         ]
       },
       { path: '**', redirectTo: 'pages/notfound' },

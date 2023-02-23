@@ -1,0 +1,117 @@
+<h3><strong>Cari Pasien</strong></h3>
+<div class="col-12">
+    <div class="card">
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-4">
+                <label htmlFor="namapasien">Nomor Pasien</label>
+                <input pInputText id="firstname2" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="namalengkap">Nama Lengkap</label>
+                <input pInputText id="namalengkap" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="NIK">Nomor Induk Kependudukan</label>
+                <input pInputText id="NIK" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="telp">Nomor Telp</label>
+                <input pInputText id="telp" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="alamat">Alamat</label>
+                <input pInputText id="alamat" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="kartu">Nomor Kartu</label>
+                <input pInputText id="kartu" type="text" />
+            </div>
+        </div>
+        <div class="field flex gap-2">
+        <p-button label="Search" icon="pi pi-search" [loading]="isLoading"></p-button>   
+        <p-button label="Daftar" icon="pi pi-plus" class="p-button-warning" [loading]="isLoading"></p-button>
+    </div>     
+    </div>
+</div>
+
+<h3><strong>Daftar Pasien Baru</strong></h3>
+<div class="col-12">
+    <div class="card">
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12">
+                <label htmlFor="nomorpasien">Nomor Pasien</label>
+                <input pInputText id="nomorpasies" disabled type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="namalengkap">Nama Lengkap</label>
+                <input pInputText id="namalengkap" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="kelamin">Jenis Kelamin</label>
+                <p-dropdown id="kelamin" [options]="dropdownkelamin"  [(ngModel)]="selectedkelamin" [(ngModel)]="kelamin" optionLabel="jenis" placeholder="Jenis Kelamin"></p-dropdown>
+            </div>
+            <div class="field col-4">
+                <label htmlFor="gol-darah">Golongan Darah</label>
+                <p-dropdown id="gol-darah" [options]="golongandarah" [(ngModel)]="selectgoldarah" [(ngModel)]="goldarah" optionLabel="gol" ></p-dropdown>
+            </div>
+            <div class="field col-3">
+                <label htmlFor="tempat">Tempat</label>
+                <input pInputText id="tempat" type="text" />
+            </div>
+            <div class="field col-3">
+                <label htmlFor="lahir">Tanggal Lahir</label>
+                <p-calendar [(ngModel)]="dateValue" [showIcon]="true" dateFormat="dd MM yy" (ngModelChange)="onDateChange()" showButtonBar="true"></p-calendar>
+            </div>
+                    <div class="field col-2">
+                        <label htmlFor="umur">Umur</label>
+                        <input pInputText id="umur" type="text" [(ngModel)]="umur" disabled  />
+                    </div>
+                    <div class="field col-2">
+                        <label htmlFor="bulan">Bulan</label>
+                        <input pInputText id="bulan" type="text" [(ngModel)]="bulan" disabled />
+                    </div>
+                    <div class="field col-2">
+                        <label htmlFor="hari">Hari</label>
+                        <input pInputText id="hari" type="text" [(ngModel)]="hari" disabled />
+                    </div>
+                    
+            <div class="field col-4">
+                <label htmlFor="nik">Nomor Induk Kependudukan</label>
+                <input pInputText id="nik" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="agama">Agama</label>
+                <p-dropdown id="agama" [options]="pilihanagama" [(ngModel)]="selectagama" [(ngModel)]="agama" optionLabel="agama" ></p-dropdown>
+            </div>
+            <div class="field col-4">
+                <label htmlFor="pendidikan">Pendidikan</label>
+                <p-dropdown id="pendidikan" [options]="pilihpendidikan" [(ngModel)]="selectpendidikan" [(ngModel)]="pendidikan" optionLabel="pend" ></p-dropdown>
+            </div>
+            <div class="field col-4">
+                <label htmlFor="pekerjaan">Pendidikan</label>
+                <p-dropdown id="pekerjaan" [options]="pilihpekerjaan" [(ngModel)]="selectpekerjaan" [(ngModel)]="pekerjaan" optionLabel="kerja" ></p-dropdown>
+            </div>
+            <div class="field col-4">
+                <label htmlFor="telp">No. Telp</label>
+                <input pInputText id="telp" type="text" />
+            </div>
+            <div class="field col-4">
+                <label htmlFor="email">Email Address</label>
+                <input pInputText id="email" type="text" />
+            </div>
+            <div class="field col-12">
+                <label htmlFor="alamat">Alamat</label>
+                <input pInputText id="alamat" type="text" />
+            </div>
+            <div class="field col-3">
+                <label htmlFor="daftar">Tanggal Daftar</label>
+                <p-calendar [(ngModel)]="dateNow" [showIcon]="true" showTime="true" disabled ></p-calendar>
+            </div>
+        </div>
+        <div class="field flex gap-2">
+        <p-button label="Daftar" icon="pi pi-plus" class="p-button-warning" [loading]="isLoading"></p-button>
+    </div>     
+    </div>
+</div>
+
+

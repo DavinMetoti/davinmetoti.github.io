@@ -1,0 +1,54 @@
+<h3>DAFTAR PERMOHONAN HAK AKSES</h3>
+<p-table [value]="hakakses" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Preview</th>
+            <th>Tanggal Pembuatan</th>
+            <th>Nama Lengkap</th>
+            <th>Cabang</th>
+            <th>Divisi</th>
+            <th>Hak Akses</th>
+            <th>username</th>
+            <th>password</th>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-hakakses>
+        <tr>
+            <td><button pButton type="button" icon="pi pi-eye" class="p-button-success" (click)="showDialog(hakakses)"></button></td>
+            <td>{{hakakses.create_at  | date:'dd/MM/yyyy' }}</td>
+            <td>{{hakakses.nama_lengkap}}</td>
+            <td>{{hakakses.cabang}}</td>
+            <td>{{hakakses.divisi}}</td>
+            <td>{{hakakses.hakakses}}</td>
+            <td>{{hakakses.username}}</td>
+            <td>{{hakakses.password}}</td>
+        
+        </tr>
+    </ng-template>
+</p-table>
+<p-dialog [(visible)]="display" header="Pengajuan Hak Akses Cabang {{ selecthakakses?.cabang }}" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <div *ngIf="selecthakakses">
+      <p><strong>Nama Lengkap:</strong> {{ selecthakakses.nama_lengkap }}</p>
+      <p><strong>Email:</strong> {{ selecthakakses.email }}</p>
+      <p><strong>NIP:</strong> {{ selecthakakses.nip }}</p>
+      <p><strong>Telp:</strong> {{ selecthakakses.telp }}</p>
+      <p><strong>Cabang:</strong> {{ selecthakakses.cabang }}</p>
+      <p><strong>Divisi:</strong> {{ selecthakakses.divisi }}</p>
+      <p><strong>Hak Akses:</strong> {{ selecthakakses.hakakses }}</p>
+      <p><strong>Aplikasi:</strong> {{ selecthakakses.aplikasi }}</p>
+      <p>Saya sebagai pemohon menyatakan bahwa semua data yang telah saya berikan di atas adalah benar dan bertanggungjawab penuh atas penggunaannya serta menyetujui ketentuan lain yang berlaku dalam penggunaan sistem informasi di PT CITO PUTRA UTAMA.</p>     
+    </div>
+    <p></p>
+    <div class="p-fluid field">
+        <label for="username">Username</label>
+        <input pInputText type="text" id="username" placeholder="Username" [(ngModel)]="user" required>
+      </div>
+      <div class="p-fluid field">
+        <label for="password">Password</label>
+        <input pInputText type="text" id="password" placeholder="Password" [(ngModel)]="pass" required>
+      </div>
+      <div class="field">
+        <p-button pRipple type="button" class="p-button-success" (click)="sendUserPassword(user,pass)" >Menyetujui</p-button>
+      </div>     
+    </p-dialog>
+    <p-toast position="top-left"></p-toast>

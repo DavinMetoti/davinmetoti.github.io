@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-datauser',
@@ -13,7 +14,14 @@ export class DatauserComponent implements OnInit {
     { label: 'User', value: 'user' }
   ];
 
-  constructor(private dataService: DataService) { }
+  statusOptions: any[] = [
+    { label: 'active', value: 1 },
+    { label: 'non-active', value: 0 }
+  ];
+
+  constructor(
+    private dataService: DataService,
+    private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.dataService.getUsers('token').subscribe(data => {
@@ -31,8 +39,15 @@ export class DatauserComponent implements OnInit {
   }
 
   onSubmit(user: any) {
-    this.dataService.updateUser(user, 'token').subscribe(data => {
-      console.log(data);
-    });
+    this.dataService.updateUser(user, 'token').subscribe(
+      (response) => {
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Akun berhasil diupdate'});
+        console.log(response);
+      },
+      (error) => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Gagal mengupdate akun'});
+        console.log(error);
+      }
+    );
   }
 }

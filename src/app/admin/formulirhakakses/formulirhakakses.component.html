@@ -1,1 +1,39 @@
-<p>formulirhakakses works!</p>
+<div class="card">
+   <h5 style="text-align: center;">Form Hak Akses</h5>
+   <div class="p-formgrid p-grid">
+     <div class="p-fluid field">
+       <label for="namalengkap">Nama lengkap</label>
+       <input id="namalengkap" type="text" placeholder="Nama Lengkap" [(ngModel)]="namalengkap" pInputText>
+     </div>
+     <div class="p-fluid field">
+       <label for="email">Email Address</label>
+       <input id="email" type="text" placeholder="Email Address" [(ngModel)]="email" pInputText>
+     </div>
+     <div class="p-fluid field">
+      <label for="telp">No Telp</label>
+      <input id="telp" type="number" placeholder="Nomor Telepon" [(ngModel)]="telp" pInputText>
+    </div>
+
+    <div class="p-fluid field">
+      <label for="nip">Nomor Induk Pegawai</label>
+      <input id="nip" type="number" placeholder="Nomor Induk Pegawai" [(ngModel)]="nip" pInputText>
+    </div>
+ 
+     <label for="Cabang">Cabang</label>
+     <p-dropdown id="Cabang" styleClass="w-full mb-3" [options]="dropdowncabang" [(ngModel)]="selectedcabang" [(ngModel)]="cabang" optionLabel="nama" placeholder="Pilih Cabang"></p-dropdown>
+ 
+     <label for="Divisi">Divisi</label>
+     <p-dropdown id="Divisi" styleClass="w-full mb-3" [options]="dropdowndivisi" [(ngModel)]="selectedDivisi" [(ngModel)]="divisi" optionLabel="nama" placeholder="Pilih Divisi"></p-dropdown>
+ 
+     <div class="p-fluid field">
+      <label for="Hak Akses">Hak Akses</label>
+      <p-dropdown id="Hak Akses" styleClass="w-full mb-3" [options]="selectedDivisi?.hakakses" [(ngModel)]="hakAksess" optionLabel="nama" [disabled]="!selectedDivisi"></p-dropdown>      
+     </div>
+     <div class="p-fluid field">
+      <label for="apk">Aplikasi</label>
+     <p-multiSelect id="apk" [options]="aplikasi" [(ngModel)]="selectedApps"  optionLabel="name"></p-multiSelect>
+   </div>
+   <p-button pRipple label="Submit" (click)="onSubmit()"></p-button>   
+</div>
+ </div>
+ 
